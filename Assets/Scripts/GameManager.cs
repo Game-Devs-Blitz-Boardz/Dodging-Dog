@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     int score = 0;
 
     public TextMeshProUGUI scoreText;
+    public GameObject gameOverPanel;
 
     void Awake() {
         instance = this;
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
     public void GameOver() {
         gameOver = true;
         obstacleSpawner.StopSpawning();
+        gameOverPanel.SetActive(true);
     }
 
     public void IncrementScore() {
