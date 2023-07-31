@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class GameManager : MonoBehaviour
     bool gameOver = false;
     ObstacleSpawner obstacleSpawner;
     int score = 0;
+
+    public TextMeshProUGUI scoreText;
 
     void Awake() {
         instance = this;
@@ -21,6 +24,7 @@ public class GameManager : MonoBehaviour
     public void IncrementScore() {
         if (!gameOver) {
             score++;
+            scoreText.text = score.ToString();
             Debug.Log(score);
         }
     }
