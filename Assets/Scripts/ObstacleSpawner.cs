@@ -9,14 +9,12 @@ public class ObstacleSpawner : MonoBehaviour
 
     void Start()
     {
-        
+        StartSpawning();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            Spawn();
-        }
+        
     }
 
     void Spawn() {
@@ -25,5 +23,13 @@ public class ObstacleSpawner : MonoBehaviour
         Vector2 spawnPos = new Vector2(randomX, transform.position.y);
 
         Instantiate(obstacle, spawnPos, Quaternion.identity);
+    }
+
+    void StartSpawning() {
+        InvokeRepeating("Spawn", 1f, spawnRate);
+    }
+
+    public void StopSpawning() {
+        CancelInvoke("Spawn");
     }
 }
